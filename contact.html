@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Many More</title>
+    <style>
+       body {
+            background-color: #F0F8FF;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            color: #222222;
+        }
+       nav {
+            background-color: #004080;
+            padding: 10px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            font-size: 18px;
+        }
+        nav a:hover {
+            background-color: darkgreen;
+        }
+        .content {
+            padding: 20px;
+            color: maroon;
+        }
+        form {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="home.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact Us</a>
+    </nav>
+
+    <div class="content">
+        <h1>Contact Us</h1>
+        <p>Have questions? Fill out the form below and we’ll get back to you.</p>
+
+
+    <form  id="contact-form">
+    <input type="text" id="name" placeholder="Your Name" required><br>
+    <input type="email" id="email" placeholder="Your Email" required><br>
+    <textarea id="message" placeholder="Your Message" rows="4" required></textarea><br>
+    <button type="submit">Send Message</button>
+   </form>
+    <p id="form-status"></p>
+    </div>
+
+    <script>
+        document.getElementById("contact-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let message = document.getElementById("message").value;
+            let status = document.getElementById("form-status");
+
+            if (name.length < 3) {
+                status.innerText = "Name must be at least 3 characters.";
+                status.style.color = "red";
+                return;
+            }
+
+            let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+            if (!email.match(emailPattern)) {
+                status.innerText = "Please enter a valid email address.";
+                status.style.color = "red";
+                return;
+            }
+
+            if (message.length < 10) {
+                status.innerText = "Message must be at least 10 characters.";
+                status.style.color = "red";
+                return;
+            }
+
+            status.innerText = "Message sent successfully!";
+            status.style.color = "green";
+            
+            setTimeout(() => {
+                document.getElementById("contact-form").reset();
+                status.innerText = "";
+            }, 3000);
+        });
+    </script>
+</body>
+</html>

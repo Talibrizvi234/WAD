@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Many More - Fashion Store</title>
+  <link rel="icon" href="Untitled design.png" type="image/x-icon">
+    <style>
+        body {
+            background-color: #F0F8FF;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            color: #222222;
+        }
+        nav {
+            background-color: #004080;
+            padding: 10px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            font-size: 18px;
+            transition: background 0.3s;
+        }
+        nav a:hover {
+            background-color: #0056b3;
+        }
+        .content {
+            padding: 20px;
+        }
+        .highlight {
+            background-color: yellow;
+            padding: 5px;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        hr {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="home.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact Us</a>
+    </nav>
+    
+    <hr>
+    <h2><marquee id="dynamic-text">|- MANY MORE -|</marquee></h2>
+    <hr>
+
+    <div class="content">
+        <h1 id="welcome-message"></h1>
+        <p><i>We make sure to serve you the best.</i></p>
+        <p>We have a variety of <b>clothes, accessories, and shoes</b> for <b>men, women, and children.</b></p>
+        <p>We also have exciting offers on our 1<sup>st</sup> anniversary.</p>
+        
+        <h2>✨ Why Choose Us?</h2>
+        <hr>
+        <p><b>Trendy Collections:</b> Handpicked styles for every occasion.</p>
+        <hr>
+        <p><b>Affordable Luxury:</b> Quality that won’t break the bank.</p>
+        <hr>
+        <p><b>Accessories That Shine:</b> Perfect add-ons to complete your look.</p>
+        <hr>
+        <p>Click on <b>HOME</b> to know more.</p>
+        <h2 class="highlight">THANK YOU</h2>
+    </div>
+    <hr>
+
+    <script>
+        // Dynamic Welcome Message
+        let hours = new Date().getHours();
+        let greeting;
+        if (hours < 12) {
+            greeting = "Good Morning! Welcome to MANY MORE!";
+        } else if (hours < 18) {
+            greeting = "Good Afternoon! Welcome to MANY MORE!";
+        } else {
+            greeting = "Good Evening! Welcome to MANY MORE!";
+        }
+        document.getElementById("welcome-message").innerText = greeting;
+
+        // Smooth Scrolling for Navigation
+        document.querySelectorAll("nav a").forEach(link => {
+            link.addEventListener("click", function(e) {
+                e.preventDefault();
+                let target = this.getAttribute("href");
+                window.location.href = target;
+            });
+        });
+    </script>
+</body>
+</html>
